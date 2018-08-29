@@ -33,30 +33,25 @@ public class UserResource {
 
 	@GetMapping("/users")
 	public MappingJacksonValue retrieveAllUsers() {
-		List<User> all = service.findAll();
-		MappingJacksonValue mapping = new MappingJacksonValue(all);
-
-		SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("id", "name");
-
-		FilterProvider filters = new SimpleFilterProvider().addFilter("UserFilter", filter);
-
-		mapping.setFilters(filters);
-		return mapping;
+		return getMappingJacksonValue(service.findAll(),
+				SimpleBeanPropertyFilter.filterOutAllExcept("id", "name"));
 	}
+
 
 	@GetMapping("/users/filer2")
 	public MappingJacksonValue retrieveFilter2AllUsers() {
-		List<User> all = service.findAll();
+		return getMappingJacksonValue(service.findAll(),
+				SimpleBeanPropertyFilter.filterOutAllExcept("id", "password", "birthDate"));
+	}
+
+	private MappingJacksonValue getMappingJacksonValue(List<User> all, SimpleBeanPropertyFilter simpleBeanPropertyFilter) {
 		MappingJacksonValue mapping = new MappingJacksonValue(all);
 
-		SimpleBeanPropertyFilter filter = SimpleBeanPropertyFilter.filterOutAllExcept("id", "password", "birthDate");
-
-		FilterProvider filters = new SimpleFilterProvider().addFilter("UserFilter", filter);
+		FilterProvider filters = new SimpleFilterProvider().addFilter("UserFilter", simpleBeanPropertyFilter);
 
 		mapping.setFilters(filters);
 		return mapping;
 	}
-
 
 	@GetMapping("/users/{id}")
 	public Resource<User> retrieveUser(@PathVariable int id) {
