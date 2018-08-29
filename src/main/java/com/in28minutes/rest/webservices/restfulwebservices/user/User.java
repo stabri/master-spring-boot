@@ -1,6 +1,7 @@
 
 package com.in28minutes.rest.webservices.restfulwebservices.user;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
@@ -12,6 +13,7 @@ import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 // /*second approach: */@JsonIgnoreProperties(value = "password")
+@JsonFilter("UserFilter")
 @ApiModel(description = "All details about user. ")
 public class User {
 
@@ -39,14 +41,6 @@ public class User {
 		this.name = name;
 		this.birthDate = birthDate;
 		this.password = "default";
-	}
-
-	public User(Integer id, String name,
-				Date birthDate, String password) {
-		this.id = id;
-		this.name = name;
-		this.birthDate = birthDate;
-		this.password = password;
 	}
 
 	public String getPassword() {
