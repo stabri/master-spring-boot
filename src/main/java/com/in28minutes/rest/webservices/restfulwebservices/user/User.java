@@ -1,6 +1,8 @@
 
 package com.in28minutes.rest.webservices.restfulwebservices.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
@@ -9,6 +11,7 @@ import java.util.Date;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
+// /*second approach: */@JsonIgnoreProperties(value = "password")
 @ApiModel(description = "All details about user. ")
 public class User {
 
@@ -22,6 +25,10 @@ public class User {
 	@ApiModelProperty(notes = " can't be in the past")
 	private Date birthDate;
 
+	//filtering value of password to not expose in json REST
+	@JsonIgnore
+	private String password;
+
 	protected User() {
 
 	}
@@ -31,6 +38,23 @@ public class User {
 		this.id = id;
 		this.name = name;
 		this.birthDate = birthDate;
+		this.password = "default";
+	}
+
+	public User(Integer id, String name,
+				Date birthDate, String password) {
+		this.id = id;
+		this.name = name;
+		this.birthDate = birthDate;
+		this.password = password;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Integer getId() {
