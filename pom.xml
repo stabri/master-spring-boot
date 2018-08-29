@@ -23,6 +23,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 		<jackson.version>2.9.6</jackson.version>
+		<swagger.version>2.0.1</swagger.version>
 	</properties>
 
 	<dependencies>
@@ -43,17 +44,32 @@
 			<scope>runtime</scope>
 		</dependency>
 
+		<!--HATEOAS SUPPORT FOR BUILDING RESOURCES WITH ADDITIONAL INFO LIKE LINKS-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-hateoas</artifactId>
 		</dependency>
 
-
+		<!--JACKSON DATA FORMAT SUPPORT REST FOR APPLICATION/XML-->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
 			<version>${jackson.version}</version>
 		</dependency>
+
+		<!--SWAGGER DOCUMENTATION -->
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swagger.version}</version>
+		</dependency>
+
+		<!--ADD UI ON ENDPOINT /swagger-ui.html-->
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>${swagger.version}</version>
+        </dependency>
 
 		<dependency>
 			<groupId>com.h2database</groupId>
