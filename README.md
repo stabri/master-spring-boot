@@ -6,7 +6,7 @@
 - [ACTUATOR](#actuator)
 - [Versioning](#versioning)
 - [Authentication](#authentication)
-
+- [JPA](#jpa)
 
 ### Used technologies
 
@@ -59,3 +59,7 @@ Provide Resource object which can be use to wrap return bean with additional inf
  1. **Basic authentication** : user + password - simple add spring-security
  2. **Adjust authentication** : adjust password created and send access application to not send to server actual password
  3. **OAuth or OAuth2**
+ 
+### JPA
+
+h2 default:  _**jdbc:h2:mem:testdb**_

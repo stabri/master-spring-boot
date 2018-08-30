@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import com.in28minutes.rest.webservices.restfulwebservices.user.entities.User;
 import org.springframework.stereotype.Component;
 
 @Component

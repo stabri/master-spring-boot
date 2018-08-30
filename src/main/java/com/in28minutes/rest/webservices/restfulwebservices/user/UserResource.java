@@ -5,14 +5,11 @@ import java.util.List;
 
 import javax.validation.Valid;
 
-import com.fasterxml.jackson.databind.ser.FilterProvider;
-import com.fasterxml.jackson.databind.ser.impl.SimpleBeanPropertyFilter;
-import com.fasterxml.jackson.databind.ser.impl.SimpleFilterProvider;
+import com.in28minutes.rest.webservices.restfulwebservices.user.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
 import org.springframework.http.ResponseEntity;
-import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,26 +29,27 @@ public class UserResource {
 	private UserDaoService service;
 
 	@GetMapping("/users")
-	public MappingJacksonValue retrieveAllUsers() {
-		return getMappingJacksonValue(service.findAll(),
-				SimpleBeanPropertyFilter.filterOutAllExcept("id", "name"));
+	public List<User> retrieveAllUsers() {
+//		return getMappingJacksonValue(service.findAll(),
+//				SimpleBeanPropertyFilter.filterOutAllExcept("id", "name"));
+		return service.findAll();
 	}
 
+//
+//	@GetMapping("/users/filer2")
+//	public MappingJacksonValue retrieveFilter2AllUsers() {
+//		return getMappingJacksonValue(service.findAll(),
+//				SimpleBeanPropertyFilter.filterOutAllExcept("id", "password", "birthDate"));
+//	}
 
-	@GetMapping("/users/filer2")
-	public MappingJacksonValue retrieveFilter2AllUsers() {
-		return getMappingJacksonValue(service.findAll(),
-				SimpleBeanPropertyFilter.filterOutAllExcept("id", "password", "birthDate"));
-	}
-
-	private MappingJacksonValue getMappingJacksonValue(List<User> all, SimpleBeanPropertyFilter simpleBeanPropertyFilter) {
-		MappingJacksonValue mapping = new MappingJacksonValue(all);
-
-		FilterProvider filters = new SimpleFilterProvider().addFilter("UserFilter", simpleBeanPropertyFilter);
-
-		mapping.setFilters(filters);
-		return mapping;
-	}
+//	private MappingJacksonValue getMappingJacksonValue(List<User> all, SimpleBeanPropertyFilter simpleBeanPropertyFilter) {
+//		MappingJacksonValue mapping = new MappingJacksonValue(all);
+//
+//		FilterProvider filters = new SimpleFilterProvider().addFilter("UserFilter", simpleBeanPropertyFilter);
+//
+//		mapping.setFilters(filters);
+//		return mapping;
+//	}
 
 	@GetMapping("/users/{id}")
 	public Resource<User> retrieveUser(@PathVariable int id) {

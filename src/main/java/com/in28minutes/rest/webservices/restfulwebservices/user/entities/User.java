@@ -1,23 +1,32 @@
 
-package com.in28minutes.rest.webservices.restfulwebservices.user;
+package com.in28minutes.rest.webservices.restfulwebservices.user.entities;
 
 import com.fasterxml.jackson.annotation.JsonFilter;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
 // /*second approach: */@JsonIgnoreProperties(value = "password")
-@JsonFilter("UserFilter")
+//@JsonFilter(value = "UserFilter")
 @ApiModel(description = "All details about user. ")
+@Entity
 public class User {
 
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer id;
+
 
 	@ApiModelProperty(notes = "Name should have atleast 2 characters")
 	@Size(min=2, message="Name should have atleast 2 characters")
