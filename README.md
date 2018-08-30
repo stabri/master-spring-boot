@@ -2,14 +2,15 @@
 
 - [Technologies](#used-technologies)
 - [Internationalization](#internationalization)
-- [HATEOAS](#Hateoes)
-- [ACTUATOR](#Actuator)
-- [Versioning](#Versioning)
+- [HATEOAS](#hateoes)
+- [ACTUATOR](#actuator)
+- [Versioning](#versioning)
+- [Authentication](#authentication)
 
 
 ### Used technologies
 
-- SpringBoot
+-  SpringBoot
 - JPA
 - Hateoas
 - Swagger2
@@ -52,3 +53,9 @@ Provide Resource object which can be use to wrap return bean with additional inf
   - Caching - hard with header 
   - API Documentation
   - Can we execute the request on browser 
+  
+### Authentication
+
+ 1. **Basic authentication** : user + password - simple add spring-security
+ 2. **Adjust authentication** : adjust password created and send access application to not send to server actual password
+ 3. **OAuth or OAuth2**
