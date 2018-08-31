@@ -1,4 +1,4 @@
-package com.in28minutes.rest.webservices.restfulwebservices.user;
+package com.in28minutes.rest.webservices.restfulwebservices.user.repositories;
 
 import java.util.ArrayList;
 import java.util.Date;

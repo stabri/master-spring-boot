@@ -1,4 +1,4 @@
-package com.in28minutes.rest.webservices.restfulwebservices.user;
+package com.in28minutes.rest.webservices.restfulwebservices.user.repositories;
 
 import com.in28minutes.rest.webservices.restfulwebservices.user.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;

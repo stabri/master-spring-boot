@@ -9,11 +9,13 @@ import io.swagger.annotations.ApiModelProperty;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Past;
 import javax.validation.constraints.Size;
 
@@ -39,6 +41,9 @@ public class User {
 	//filtering value of password to not expose in json REST
 	@JsonIgnore
 	private String password;
+
+	@OneToMany(mappedBy = "user")
+	private List<Post> postList;
 
 	protected User() {
 
@@ -82,6 +87,14 @@ public class User {
 
 	public void setBirthDate(Date birthDate) {
 		this.birthDate = birthDate;
+	}
+
+	public List<Post> getPostList() {
+		return postList;
+	}
+
+	public void setPostList(List<Post> postList) {
+		this.postList = postList;
 	}
 
 	@Override

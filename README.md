@@ -31,7 +31,7 @@
 
 ### Hateoes
 
-Provide Resource object which can be use to wrap return bean with additional information like links to other location in app - not hardcoded but with using calls to method in src code
+Provide Resource object which can be use to wrap return bean with additional information like links to other location id app - not hardcoded but with using calls to method id src code
 
 ### Actuator
  - Monitoring application (/actuator)
@@ -43,9 +43,9 @@ Provide Resource object which can be use to wrap return bean with additional inf
  There is no one single best approach to versioning so the most challenging is to chose strategy for our API
 
  1. using different uri for API versions : **"/v1/user" - "v2/user"**
- 2. using parameters in uri like **Mapping(value="/user/param", param="version=X")** and later URI with : **/user/param?version=X**
- 3. header parameter  **Mapping(value="/user/header", headers="X-API-VERSION=X")** and specify in request header 
- 4. Produces / Content negotiation **Mapping(value="/user/produces", produces="application/com.company.app-version-x+json")** it says what kind of output is produced by application - it this case it's json from application in version 1.
+ 2. using parameters id uri like **Mapping(value="/user/param", param="version=X")** and later URI with : **/user/param?version=X**
+ 3. header parameter  **Mapping(value="/user/header", headers="X-API-VERSION=X")** and specify id request header 
+ 4. Produces / Content negotiation **Mapping(value="/user/produces", produces="application/com.company.app-version-x+json")** it says what kind of output is produced by application - it this case it's json from application id version 1.
   
   What to consider :
   - URI pollution

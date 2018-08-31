@@ -1,10 +1,12 @@
-package com.in28minutes.rest.webservices.restfulwebservices.user;
+package com.in28minutes.rest.webservices.restfulwebservices.user.controllers;
 
 import java.net.URI;
 import java.util.List;
 
 import javax.validation.Valid;
 
+import com.in28minutes.rest.webservices.restfulwebservices.user.repositories.UserDaoService;
+import com.in28minutes.rest.webservices.restfulwebservices.user.exceptions.UserNotFoundException;
 import com.in28minutes.rest.webservices.restfulwebservices.user.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;

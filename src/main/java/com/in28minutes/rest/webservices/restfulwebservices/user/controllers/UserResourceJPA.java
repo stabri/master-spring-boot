@@ -1,5 +1,9 @@
-package com.in28minutes.rest.webservices.restfulwebservices.user;
+package com.in28minutes.rest.webservices.restfulwebservices.user.controllers;
 
+import com.in28minutes.rest.webservices.restfulwebservices.user.entities.Post;
+import com.in28minutes.rest.webservices.restfulwebservices.user.exceptions.UserNotFoundException;
+import com.in28minutes.rest.webservices.restfulwebservices.user.repositories.PostRepository;
+import com.in28minutes.rest.webservices.restfulwebservices.user.repositories.UserRepository;
 import com.in28minutes.rest.webservices.restfulwebservices.user.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
@@ -27,6 +31,8 @@ public class UserResourceJPA {
 
     @Autowired
     private UserRepository repository;
+    @Autowired
+    private PostRepository postRepository;
 
     @GetMapping("/jpa/users")
     public List<User> retrieveAllUsers() {
@@ -65,5 +71,15 @@ public class UserResourceJPA {
 
         return ResponseEntity.created(location).build();
 
+    }
+
+    @GetMapping(value = "/jpa/users/{id}/posts")
+    public List<Post> retrieveAllUserPosts(@PathVariable int id) {
+        Optional<User> user = repository.findById(id);
+
+        if(!user.isPresent()){
+            throw new UserNotFoundException("id "+ id);
+        }
+        return user.get().getPostList();
     }
 }
