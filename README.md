@@ -7,7 +7,7 @@
 - [Versioning](#versioning)
 - [Authentication](#authentication)
 - [JPA](#jpa)
-
+- [Richardson Maturity Model](#richardson-maturity-model)
 ### Used technologies
 
 -  SpringBoot
@@ -63,3 +63,15 @@ Provide Resource object which can be use to wrap return bean with additional inf
 ### JPA
 
 h2 default:  _**jdbc:h2:mem:testdb**_
+
+### Richardson Maturity Model
+
+ three levels of restful services [article](#https://martinfowler.com/articles/richardsonMaturityModel.html)
+ 
+ **Best practices**:
+ - Consumer first and good documentation
+ - Best use of http provides (use http codes not server errors)
+ - No secure info in URI
+ - Always use plurals (users not user)
+ - Use nouns for resources 
+ - Consistent approach for exceptions

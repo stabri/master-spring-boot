@@ -82,4 +82,25 @@ public class UserResourceJPA {
         }
         return user.get().getPostList();
     }
+
+    @PostMapping(value = "/jpa/users/{id}/posts")
+    public ResponseEntity<Object> createPost(@PathVariable int id, @RequestBody Post post) {
+        Optional<User> user = repository.findById(id);
+
+        if(!user.isPresent()){
+            throw new UserNotFoundException("id "+ id);
+        }
+
+        post.setUser(user.get());
+
+        postRepository.save(post);
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(user.get().getId()).toUri();
+
+        return ResponseEntity.created(location).build();
+    }
+
 }
